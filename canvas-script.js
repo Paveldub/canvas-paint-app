@@ -54,21 +54,22 @@ document.addEventListener('DOMContentLoaded', function () {
   })
 
   // clear
-  let clear = document.getElementById('clear')
+  let clearBtn = document.getElementById('clear')
 
-  clear.addEventListener('click', function (e) {
-    let target = e.target
-
-    console.log(target)
+  clearBtn.addEventListener('click', function () {
+    context.clearRect(0, 0, canvas.width, canvas.height)
   })
 
-  // save
-  let save = document.getElementById('save')
+  // save data
+  let saveBtn = document.getElementById('save')
 
-  save.addEventListener('click', function (e) {
-    let target = e.target
-
-    console.log(target)
+  saveBtn.addEventListener('click', function () {
+    let imageName = prompt('Please enter image name')
+    let canvasDataURL = canvas.toDataURL()
+    let a = document.createElement('a')
+    a.href = canvasDataURL
+    a.download = imageName || 'drawing'
+    a.click()
   })
 
   // handle mouse coords
